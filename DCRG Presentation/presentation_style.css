@@ -1,0 +1,91 @@
+/* Debugging styles */
+.debug {
+	background-color: rgba(255, 0, 0, 0.2);
+	border: 1px solid red;
+}
+
+/*mass spring animation*/
+.animation {
+	border: 2px solid black;
+	border-radius: 10px;
+	min-height: 0;
+	min-width: 0;
+}
+
+/*latex style equations*/
+.equation{
+	text-align: center;
+	width: 100%;
+}
+p:has(> code.equation) {
+	text-align: center;
+	width: 100%;
+} 
+
+/*stacked images*/
+.stacked{
+	& * {
+		position: absolute;
+  		top: 0;
+  		left: 0;
+	}
+}
+
+/*generic div*/
+.container{
+	position:relative;
+	display: flex;
+	min-width: 0;
+	min-height: 0;
+}
+
+/*fragment with 0 fade in time*/
+.fragment.appear{
+	visibility: hidden;
+}
+.fragment.appear.visible{
+	visibility: visible;
+}
+
+/*absolute div*/
+.absolute {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+/* text over image */
+.overlay{position: absolute;
+	top:0;
+	right:0;
+	text-align: right;
+	font-size:18pt;
+	font-family: Times New Roman;
+	margin: 5px 10px;
+}
+.overlay-image{position: absolute;
+	top:0;
+	right:0;
+}
+
+
+/* flow column */
+.column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	height: 700px;
+	overflow: hidden;
+}
+
+
+/* caption */
+.caption {
+	position: relative;
+	font-size: 22px;
+	color: #555;
+	border-top: 1px solid #ccc;
+}
