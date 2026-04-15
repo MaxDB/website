@@ -137,6 +137,47 @@ Supervised by Tom Hill and Rainer Groh
 
 
 
+
+<img src="DCRG Presentation/figs/reduction overview 1.svg" alt="" style="position: absolute; bottom: 0; object-fit: scale-down">
+
+
+
+
+<img src="DCRG Presentation/figs/reduction overview 2.svg" alt="" style="position: absolute; bottom: 0; object-fit: scale-down" class="fragment appear" data-fragment-index="1">
+
+
+<img src="DCRG Presentation/figs/reduction overview 3.svg" alt="" style="position: absolute; bottom: 0; object-fit: scale-down" class="fragment appear" data-fragment-index="2">
+
+
+<img src="DCRG Presentation/figs/reduction overview 4.svg" alt="" style="position: absolute; bottom: 0; object-fit: scale-down" class="fragment appear" data-fragment-index="3">
+
+
+<img src="DCRG Presentation/figs/reduction overview 5.svg" alt="" style="position: absolute; bottom: 0; object-fit: scale-down" class="fragment appear" data-fragment-index="4">
+
+
+<img src="DCRG Presentation/figs/reduction overview 6.svg" alt="" style="position: absolute; bottom: 0; object-fit: scale-down" class="fragment appear" data-fragment-index="5">
+
+
+ 
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+### Fundamentals of reduced order modelling
+</div>
+
+ 
+</div>
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
 <img src="DCRG Presentation/figs/mems_beam.png" alt="" style="object-fit: scale-down">
 
 <br>
@@ -174,7 +215,7 @@ Supervised by Tom Hill and Rainer Groh
 
 <div class="block">
 
-- The dynamic behaviours that help us answer this question are made up of configurations that exist in a 200,000 dimensional state space
+- The dynamic behaviours that help us answer this question are made up of configurations that exist in a 200,000 dimensional state space.
 </div>
 
  <!-- .element: class="fragment appear" data-fragment-index="1" -->
@@ -223,7 +264,7 @@ Supervised by Tom Hill and Rainer Groh
 <!-- .element: class="fragment appear" data-fragment-index="2" -->
 <div class="block">
 
-- Assume we start with zero knowledge about system and that the equations of motion are inaccessible.
+- Assume we start with zero knowledge about the dynamics of the system and that the equations of motion are inaccessible.
 </div>
 
 <!-- .element: class="fragment appear" data-fragment-index="3" -->
@@ -260,11 +301,17 @@ Supervised by Tom Hill and Rainer Groh
 <div class="block">
 
 - `$\mathbf f_x$` describes a smooth, continuous, nonlinear restoring force.
-- The exact form of `$\mathbf f_{x}$` does not need to be known.
+- `$\mathbf f_{x}(\mathbf x)$` can be many-to-one (not necessarily injective)
+- Provided these conditions, the exact form of `$\mathbf f_{x}$` does not need to be known.
 </div>
 
+<!-- .element: class="fragment appear" data-fragment-index="1" -->
+<div class="block">
 
+- Reduction is achieved by removing unnecessary configurations from the domain of `$\mathbf f_x$` and then re-parametrising.
+</div>
 
+<!-- .element: class="fragment appear" data-fragment-index="2" -->
  
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -285,9 +332,10 @@ Supervised by Tom Hill and Rainer Groh
 
 
 - Assume that the restoring force at the desired configurations are linear combinations of a subset of 'modal forces'.
+
+<div class="block">
+
 - Apply forces in combinations of these shapes to the FE model to build up the reduced subspace. For a loadcase, `$\boldsymbol \lambda^{(i)}$`:
-
-
 
 <div class="block">
 
@@ -297,9 +345,16 @@ Supervised by Tom Hill and Rainer Groh
 </div>
 
 <!-- .element: class="equation" -->
+</div>
+
+<!-- .element: class="fragment appear" data-fragment-index="1" -->
+
+<div class="block">
 
 - Over a sufficient range of loadcases we can fit polynomial models for `$\mathbf f_{x}(\mathbf r)$` and `$\mathbf x(\mathbf r)$`.
- 
+<div class="block">
+
+<!-- .element: class="fragment appear" data-fragment-index="2" --> 
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -329,15 +384,60 @@ Supervised by Tom Hill and Rainer Groh
 
 <div class="block">
 
-- In order for the final results to be accurate this equation must be evaluated correctly.
-- ROM verification vs ROM validation:
+- In order for the final results to be accurate this equation must be evaluated correctly and `$\mathbf x(\mathbf r)$` must be 'relevant'.
+</div>
+
+<!-- .element: class="fragment appear" data-fragment-index="1" -->
+<div class="block">
+
+- Verification vs validation:
 	- Verification: Has the method been correctly implemented?
 	- Validation: Are the underlying assumptions valid?
-- We'll assume that all subsequent ROMs have been verified.
+</div>
+
+<!-- .element: class="fragment appear" data-fragment-index="2" -->
+<div class="block">
+
+- We'll assume that all subsequent models have been verified.
+</div>
+
+<!-- .element: class="fragment appear" data-fragment-index="3" -->
+
+ 
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+### Modal restoring force assumption
+</div>
+
+
+</div>
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+<div class="block">
+
+- Is this a good guess?
+	- It can be!<!-- .element: class="fragment appear" data-fragment-index="1" -->
 </div>
 
 
 
+<div class="block">
+
+- Generally the more sophisticated the guess the more complex the process for creating the reduced-order model.
+
+- The more robust the validation method the less we require a high degree of confidence in the initial guess.
+</div>
+
+<!-- .element: class="fragment appear" data-fragment-index="2" -->
  
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -424,80 +524,11 @@ Supervised by Tom Hill and Rainer Groh
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
- <div class="block">
-
-### General reduced order model approach
-</div>
-
-
-</div>
-
-<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
-
-
-
-- Assume that the dynamics can be described by a certain configuration subspace.
-- If true, the equations of motion can be projected onto the subspace and the dynamics of interest will be unaffected.
-- We need to do this without having access to the full equations of motion and only using "standard" FE operations. 
-</div>
-</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
- <div class="block">
-
-### Applied Force Reduction
-</div>
-
-
-</div>
-
-<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
-
-
-
-- The reduced subspace is defined by linear combinations of _**modal forces**_.
-- The subspace can be mapped out by applying the forces to the system and extracting the resulting displacements.
-- Unlike linear modal reduction, this results in a _**curved**_ space called a _**stress manifold**_.
- 
-</div>
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
- <div class="block">
-
-### Equations of motion
-</div>
-
-
-</div>
-
-<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
-
-
-
-`$\mathbf M \ddot{\mathbf x} + \mathbf f_{x}(\mathbf x) = \mathbf 0$`<!-- .element: class="equation" -->
-
-`$\downarrow$`<!-- .element: class="equation" -->
-
-`$\left(\frac{\partial\tilde{\mathbf x}}{\partial \mathbf r}\right)^{\mathbf T}\mathbf M\left( \frac{\partial\tilde{\mathbf x}}{\partial \mathbf r}\ddot{\mathbf r} +  \frac{\partial^{2}\tilde{\mathbf x}}{\partial \mathbf r^{2}}\dot{\mathbf r}\dot{\mathbf r}\right) + \tilde{\mathbf f}_{r}(\mathbf r) = \mathbf 0$`<!-- .element: class="equation" -->
-
-- From a system of `$N=\text{ num dofs}$`, to a system of `$R=\text{num reduced modes}$`, nonlinear differential equations.
- 
-</div>
-</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
 <div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
  <div class="block">
 
-### 1D Stress Manifold
+### 1D Reduced subspace
 </div>
 
 
@@ -509,9 +540,9 @@ Supervised by Tom Hill and Rainer Groh
 <div class="block">
 
 <div class="stacked">
-	<img  src="DCRG Presentation/figs/applied_force_1.png">
-	<img  src="DCRG Presentation/figs/applied_force_2.png" class="fragment" data-fragment-index="1">
-	<img  src="DCRG Presentation/figs/manifold_marker.gif" class="fragment" data-fragment-index="1"> 
+	<img  src="DCRG Presentation/figs/applied_force_1.png"></img>
+	<img  src="DCRG Presentation/figs/applied_force_2.png" class="fragment" data-fragment-index="1"></img>
+	<img  src="DCRG Presentation/figs/manifold_marker.gif" class="fragment" data-fragment-index="1"></img> 
 </div>
 </div>
 
@@ -537,6 +568,72 @@ Supervised by Tom Hill and Rainer Groh
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
+<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+### One mode backbone
+</div>
+
+
+</div>
+
+<div class="has-light-background" style="background-color: white; padding: 0 0; box-sizing: border-box; position: absolute; left: 0%; top: 15%; height: 85%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+<img src="DCRG Presentation/figs/mass_spring_one_rom_bb.svg" alt="" style="object-fit: scale-down">
+
+ 
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+### 2D Reduced subspace
+</div>
+
+ 
+</div>
+
+<div class="has-light-background" style="background-color: white; padding: 0 0; box-sizing: border-box; position: absolute; left: 0%; top: 15%; height: 85%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+<img src="DCRG Presentation/figs/stress_manifold_comp_1.png" alt="" style="object-fit: scale-down">
+
+ 
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+### Reduced-Order Model (ROM) predictions
+</div>
+
+
+</div>
+
+<div class="has-light-background" style="background-color: white; padding: 0 0; box-sizing: border-box; position: absolute; left: 0%; top: 15%; height: 85%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+<img src="DCRG Presentation/figs/energy_backbone_comp_annotated.svg" alt="" style="object-fit: scale-down">
+
+ 
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
 <div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
  <div class="block">
@@ -553,13 +650,13 @@ Supervised by Tom Hill and Rainer Groh
 <div class="block">
 
 <div class="stacked">
-	<img  src="DCRG Presentation/figs/stress_manifold_comp_1.png">
-	<img  src="DCRG Presentation/figs/stress_manifold_comp_2.png" class="fragment" data-fragment-index="1">
-	<img  src="DCRG Presentation/figs/stress_manifold_comp_3.png" class="fragment" data-fragment-index="2">
-	<img  src="DCRG Presentation/figs/stress_manifold_comp_4_annotated.png" class="fragment" data-fragment-index="3">
-	<img  src="DCRG Presentation/figs/orbit_marker_1.gif" class="fragment" data-fragment-index="1">
-	<img  src="DCRG Presentation/figs/orbit_marker_2.gif" class="fragment" data-fragment-index="2">
-	<img  src="DCRG Presentation/figs/orbit_marker_3.gif" class="fragment" data-fragment-index="3">
+	<img  src="DCRG Presentation/figs/stress_manifold_comp_1.png"></img>
+	<img  src="DCRG Presentation/figs/stress_manifold_comp_2.png" class="fragment" data-fragment-index="1"></img>
+	<img  src="DCRG Presentation/figs/stress_manifold_comp_3.png" class="fragment" data-fragment-index="2"></img>
+	<img  src="DCRG Presentation/figs/stress_manifold_comp_4_annotated.png" class="fragment" data-fragment-index="3"></img>
+	<img  src="DCRG Presentation/figs/orbit_marker_1.gif" class="fragment" data-fragment-index="1"></img> 
+	<img  src="DCRG Presentation/figs/orbit_marker_2.gif" class="fragment" data-fragment-index="2"></img>
+	<img  src="DCRG Presentation/figs/orbit_marker_3.gif" class="fragment" data-fragment-index="3"></img>
 </div>
 </div>
 
@@ -602,28 +699,6 @@ Supervised by Tom Hill and Rainer Groh
 
  <div class="block">
 
-### Reduced-order predictions
-</div>
-
-
-</div>
-
-<div class="has-light-background" style="background-color: white; padding: 0 0; box-sizing: border-box; position: absolute; left: 0%; top: 15%; height: 85%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
-
-
-
-
-<img src="DCRG Presentation/figs/energy_backbone_comp_annotated.svg" alt="" style="object-fit: scale-down">
-
- 
-</div>
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
- <div class="block">
-
 ### General validation approach 
 </div>
 
@@ -634,9 +709,28 @@ Supervised by Tom Hill and Rainer Groh
 
 
 
-- How could we have known this without the full-order results?
-	- Creating larger and larger ROMs until convergence?
-- ROM convergence would require us to create a one mode, two mode, and three mode ROM to validate this behaviour. This only becomes worse in systems that have a large number of low frequency modes.
+<div class="block">
+
+- A two mode ROM is necessary and sufficient to capture the internal resonance.
+</div>
+
+
+
+<div class="block">
+
+- How can we confirm this?
+	- Comparison with full-order results?<!-- .element: class="fragment fade-in" data-fragment-index="1" -->
+	- Creating larger and larger ROMs until convergence?<!-- .element: class="fragment fade-in" data-fragment-index="2" -->
+</div>
+
+
+<div class="block">
+
+- Both approaches can either explicitly fail or are prohibitively expensive in large systems.
+</div>
+
+<!-- .element: class="fragment fade-in" data-fragment-index="3" -->
+
  
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -646,7 +740,7 @@ Supervised by Tom Hill and Rainer Groh
 
  <div class="block">
 
-### Reducing Finite Element Models
+### A more robust validation approach
 </div>
 
 
@@ -657,34 +751,10 @@ Supervised by Tom Hill and Rainer Groh
 
 
 
-- FE models can have 1,000,000s of degrees of freedom.
-- Testing every low-frequency ROM is completely infeasible.
-- Full modal transform is no longer possible.
-- Typically the full equations of motion are inaccessible.
- 
-</div>
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
- <div class="block">
-
-### A new approach
-</div>
-
-
-</div>
-
-<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
-
-
-
-
-- Lets test each predicted orbit to see if it is possible for it to exist in a larger ROM:
-	- If it can, the added information would be redundant.
-	- If it cannot, then the orbit requires configurations that are not yet included in the ROM.
-- Testing for existence is far cheaper than creating each ROM and comparing the orbits directly. 
+- Lets test each predicted orbit to see if it is possible for it to exist in a larger subspace:
+	- If it can, the added information would be redundant.<!-- .element: class="fragment fade-in" data-fragment-index="1" -->
+	- If it cannot, then an orbit has been predicted that requires configurations that are not yet included in the ROM.<!-- .element: class="fragment fade-in" data-fragment-index="2" -->
+- Testing for existence is far cheaper than creating each ROM and comparing the orbits directly. <!-- .element: class="fragment fade-in" data-fragment-index="3" -->
  
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -914,12 +984,13 @@ where `$\mathbf W_{I}(t+T) = \mathbf W_{I}(t)$`, `$\mathbf W_{C}(t+T) = \mathbf 
 
 
 
-- Now lets consider a system where we don't have easy access to full-order results.
+- Returning to the original finite element example.
 <img src="DCRG Presentation/figs/fe_arch.png" alt="" style="object-fit: scale-down">
 
 Double arch resonator with 100,000 DoFs<!-- .element: style="left: 85px; top: -40px" class="caption" -->
 
-- Lets focus on the dynamic response around the first natural frequency: 2.7 Mrad/s
+- Consider the family of free responses emerging from the first linear solution. 
+- Interested in the maximum centre displacement.
 
  
 </div>
@@ -953,8 +1024,8 @@ Double arch resonator with 100,000 DoFs<!-- .element: style="left: 85px; top: -4
 
 <div class="block">
 
-- Creation cost `$\approx$` 6:30 mins
-- About 1 minute of this is extracting the validation data.
+- Creation cost `$\approx$` 3:30 mins
+- Extracting and processing the validation data makes up 1 min of this cost.
 
 - Results from a Windows desktop with a 5.2 GHz processor and 32 GB of RAM.
 </div>
@@ -1049,8 +1120,31 @@ Double arch resonator with 100,000 DoFs<!-- .element: style="left: 85px; top: -4
 
 <div class="block">
 
-- Creation cost `$\approx$` 10:10 mins
-- About 4 minute of this is extracting the validation data.
+<div class="block">
+
+</div>
+
+
+
+
+
+
+
+<div class="block">
+
+- Creation cost `$\approx$` 6 mins
+- `$\approx$` 2 mins of this comes from extracting and processing the validation data.
+</div>
+
+
+<div class="block">
+
+- Change of validation stability predicts behaviour.
+- Explains non-zero error at linear solution.
+</div>
+
+<!-- .element: class="fragment appear" data-fragment-index="1" -->
+
 </div>
 
 
@@ -1073,7 +1167,8 @@ Double arch resonator with 100,000 DoFs<!-- .element: style="left: 85px; top: -4
 
 <div class="block">
 
-validation
+<img src="DCRG Presentation/figs/16_validation_error_annotated.png" alt="" style="object-fit: scale-down">
+
 </div>
 
 
@@ -1084,12 +1179,77 @@ validation
 
 <div class="block">
 
-- Tested 71 orbits over 18 bases in 270 seconds.
+<div class="block">
 
-- Average: 15 seconds per basis.
 </div>
 
 
+
+
+
+
+
+<div class="block">
+
+- Tested 52 orbits over 18 validation bases in 200 seconds.
+- `$\approx$` 11 seconds per basis.
+</div>
+
+ 
+<div class="block">
+
+- No stability changes.
+- No effect on **centre** deflection (as validated against \{1,5,6,11,13\}-ROM).
+</div>
+
+<!-- .element: class="fragment appear" data-fragment-index="1" -->
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+### Validating larger systems
+</div>
+
+
+</div>
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+<img src="DCRG Presentation/figs/arch_time_complexity_4.png" alt="" style="position: absolute; bottom: 0; object-fit: scale-down">
+
+ 
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+### Comparison to full-order simulation
+</div>
+
+
+</div>
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+- Hard to compare directly as the continuation method used to find the NNMs is not viable in very large systems.
+- Cheapest validation approach is to simulate one period of an orbit in the full-order system and see if the result is periodic:
+	- `$\approx$` 5 mins per orbit in 100,000 DoF system
+	- `$\approx$` 60 mins per orbit in 1,000,000 DoF system
+ 
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -1110,10 +1270,33 @@ validation
 
 - Can quickly and efficiently evaluate the accuracy of predicted behaviours in reduced-order models of geometrically nonlinear FE systems.
 - Less prior knowledge is required to evaluate the ROMs success.
-- This approach is very broad and has potential extensions to isola and bifurcation detection.
+- This approach is very broad and can be extended to forced responses, with applications including isola and bifurcation detection.
+ 
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 1200px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 15%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+### Further details
+</div>
+
+ 
+</div>
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
 
 
 
+- Slides: https://maxdebono.com/
+
+- Evaluating applied force reduced-order models: verification (preprint: https://doi.org/10.21203/rs.3.rs-8722583/v1)
+
+- Evaluating applied force reduced-order models: validation (preprint: https://doi.org/10.21203/rs.3.rs-8723275/v1)
+
+- Software: https://github.com/MaxDB/Applied-Force-Reduction-Tool
 
  
 </div>
